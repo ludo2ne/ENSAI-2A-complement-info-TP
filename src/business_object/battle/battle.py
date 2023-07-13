@@ -26,7 +26,7 @@ class Battle:
                                    attack_description=attack_description))
 
     def __str__(self):
-        res = " Battle between " + self.first_monstie.name + \
+        res = "Battle between " + self.first_monstie.name + \
             " and " + self.second_monstie.name + "\n"
         round_number = 0
         for r in self.rounds:
