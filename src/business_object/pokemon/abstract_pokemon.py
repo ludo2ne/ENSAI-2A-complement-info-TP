@@ -66,7 +66,7 @@ class AbstractPokemon(ABC):
     def __str__(self):
         res = "I am " + str(self.name)
         res += ", level : " + str(self.level)
-        res += ", attack coef : " + str(self.get_pokemon_attack_coef())
+        res += ", hp : " + str(self.hp_current)
         return res
 
     # -------------------------------------------------------------------------
