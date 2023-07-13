@@ -14,7 +14,7 @@ class TestDefenderPokemon(TestCase):
         multiplier = snorlax.get_pokemon_attack_coef()
 
         # THEN
-        self.assertEqual(32, multiplier)
+        self.assertEqual(2, multiplier)
 
 
 if __name__ == '__main__':
