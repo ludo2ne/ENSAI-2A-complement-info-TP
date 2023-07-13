@@ -25,6 +25,17 @@ class Battle:
                                    dealt_damage=dealt_damage,
                                    attack_description=attack_description))
 
+    def __str__(self):
+        res = " Battle between " + self.first_monstie.name + \
+            " and " + self.second_monstie.name + "\n"
+        round_number = 0
+        for r in self.rounds:
+            round_number += 1
+            res += "Round " + str(round_number) + " : " + r.__str__() + "\n"
+
+        res += "Winner : " + self.winner.name
+        return res
+
     @property
     def first_monstie(self):
         return self.__first_monstie

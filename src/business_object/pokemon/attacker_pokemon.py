@@ -14,7 +14,7 @@ class AttackerPokemon(AbstractPokemon):
         special_attack = PhysicalFormulaAttack(
             power=60,
             name="Flying Strike",
-            description="{pokemon} dives to it's prey from the sky")
+            description="{pokemon} dives to it's prey from the sky".format(pokemon=name))
 
         # Calling the parent class constructor
         super().__init__(stat_max=stat_max,

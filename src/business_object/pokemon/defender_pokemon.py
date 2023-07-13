@@ -14,7 +14,7 @@ class DefenderPokemon(AbstractPokemon):
         special_attack = PhysicalFormulaAttack(
             power=60,
             name="Elbow tackle",
-            description="{pokemon.name} hits with a massive tackle ")
+            description="{pokemon} hits with a massive tackle.".format(pokemon=name))
 
         # Calling the parent class constructor
         super().__init__(stat_max=stat_max,
