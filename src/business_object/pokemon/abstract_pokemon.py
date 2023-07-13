@@ -1,11 +1,12 @@
 import copy
+from abc import ABC, abstractmethod
 
 from business_object.statistic import Statistic
 
 
-class Pokemon():
+class AbstractPokemon(ABC):
     """
-    A Pokemon
+    An abstract pokemon. As an abstract class, it as to be inherited
     """
 
     # -------------------------------------------------------------------------
@@ -16,8 +17,7 @@ class Pokemon():
                  stat_max=None,
                  stat_current=None,
                  level=0,
-                 name=None,
-                 type_pk=None):
+                 name=None) -> None:
         # -----------------------------
         # Attributes
         # -----------------------------
@@ -25,12 +25,12 @@ class Pokemon():
         self._stat_current: Statistic = stat_current
         self._level: int = level
         self._name: str = name
-        self._type: str = type_pk
 
     # -------------------------------------------------------------------------
     # Methods
     # -------------------------------------------------------------------------
 
+    @abstractmethod
     def get_pokemon_attack_coef(self) -> float:
         """
         Compute a damage multiplier related to the pokemon type.
@@ -38,34 +38,18 @@ class Pokemon():
         Returns :
             float : the multiplier
         """
-        if self._type == "Attacker":
-            multiplier = 1 + (self.speed_current + self.attack_current) / 200
-        elif self._type == "Defender":
-            multiplier = 1 + (self.attack_current + self.defense_current) / 200
-        elif self._type == "All rounder":
-            multiplier = 1 + (self.sp_atk_current + self.sp_def_current) / 200
-        elif self._type == "Speedster":
-            multiplier = 1 + (self.speed_current + self.sp_atk_current) / 200
-        elif self._type == "Supporter":
-            multiplier = 1 + (self.sp_atk_current + self.defense_current) / 200
-        else:
-            raise Exception("type inconnu")
+        pass
 
-        return multiplier
-
-    def level_up(self) -> None:
+    def level_up(self):
         """
         Increase the level by one
         """
         self._level += 1
 
-    def reset_actual_stat(self) -> None:
+    def reset_actual_stat(self):
         self._stat_current = copy.deepcopy(self._stat_max)
 
-    def get_hit(self, damage) -> None:
-        """
-        Decrease health point when receiving damages
-        """
+    def get_hit(self, damage):
         if damage > 0:
             if damage < self.hp_current:
                 self.hp_current -= damage
@@ -106,6 +90,7 @@ class Pokemon():
     def speed(self):
         return self._stat_max.speed
 
+    # Current stat_max getter/setter
     @property
     def attack_current(self):
         return self._stat_current.attack
