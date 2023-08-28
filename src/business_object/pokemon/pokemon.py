@@ -3,7 +3,7 @@ import copy
 from business_object.statistic import Statistic
 
 
-class Pokemon():
+class Pokemon:
     """
     A Pokemon
     """
@@ -12,12 +12,9 @@ class Pokemon():
     # Constructor
     # -------------------------------------------------------------------------
 
-    def __init__(self,
-                 stat_max=None,
-                 stat_current=None,
-                 level=0,
-                 name=None,
-                 type_pk=None):
+    def __init__(
+        self, stat_max=None, stat_current=None, level=0, name=None, type_pk=None
+    ):
         # -----------------------------
         # Attributes
         # -----------------------------

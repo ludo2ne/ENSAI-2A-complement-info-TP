@@ -3,13 +3,15 @@ class Statistic:
     Inventory all the game statistics
     """
 
-    def __init__(self,
-                 hp: int = 0,
-                 attack: int = 0,
-                 defense: int = 0,
-                 sp_atk: int = 0,
-                 sp_def: int = 0,
-                 speed: int = 0):
+    def __init__(
+        self,
+        hp: int = 0,
+        attack: int = 0,
+        defense: int = 0,
+        sp_atk: int = 0,
+        sp_def: int = 0,
+        speed: int = 0,
+    ):
         self.__hp = hp
         self.__attack = attack
         self.__defense = defense
