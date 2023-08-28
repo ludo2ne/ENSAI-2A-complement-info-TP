@@ -6,7 +6,6 @@ from business_object.statistic import Statistic
 
 
 class TestAbstractPokemon(TestCase):
-
     # Ok that's a little tricky. Here I want to test a method
     # of an abstract class. But I cannot instantiate abstract class
     # with abstract method.
@@ -28,7 +27,13 @@ class TestAbstractPokemon(TestCase):
     def test_reset_actual_stat(self):
         # GIVEN
         abstract_pokemon = AbstractPokemon(
-            stat_max=Statistic(hp=10, attack=11, defense=12, sp_atk=13, sp_def=14, speed=15), stat_current=Statistic(hp=0, attack=0, defense=0, sp_atk=0, sp_def=0, speed=0))
+            stat_max=Statistic(
+                hp=10, attack=11, defense=12, sp_atk=13, sp_def=14, speed=15
+            ),
+            stat_current=Statistic(
+                hp=0, attack=0, defense=0, sp_atk=0, sp_def=0, speed=0
+            ),
+        )
         # WHEN
         abstract_pokemon.reset_actual_stat()
         # THEN
@@ -44,22 +49,20 @@ class TestAbstractPokemon(TestCase):
         # GIVEN
         hit_point = 100
         damage = 50
-        abstract_pokemon = AbstractPokemon(
-            stat_current=Statistic(hp=hit_point))
+        abstract_pokemon = AbstractPokemon(stat_current=Statistic(hp=hit_point))
 
         # WHEN
         abstract_pokemon.get_hit(damage)
 
         # THEN
-        self.assertEqual(hit_point-damage, abstract_pokemon.hp_current)
+        self.assertEqual(hit_point - damage, abstract_pokemon.hp_current)
 
     @patch.multiple(AbstractPokemon, __abstractmethods__=set())
     def test_get_hit_more_damage_than_hp(self):
         # GIVEN
         damage = 100
         hit_point = 50
-        abstract_pokemon = AbstractPokemon(
-            stat_current=Statistic(hp=hit_point))
+        abstract_pokemon = AbstractPokemon(stat_current=Statistic(hp=hit_point))
 
         # WHEN
         abstract_pokemon.get_hit(damage)
@@ -68,7 +71,8 @@ class TestAbstractPokemon(TestCase):
         self.assertEqual(0, abstract_pokemon.hp_current)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run the tests
     result = TextTestRunner().run(
-        TestLoader().loadTestsFromTestCase(TestAbstractPokemon))
+        TestLoader().loadTestsFromTestCase(TestAbstractPokemon)
+    )

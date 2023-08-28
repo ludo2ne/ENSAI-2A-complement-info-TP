@@ -9,10 +9,9 @@ class TestAllRounderPokemon(TestCase):
         # GIVEN
         spe_atk = 100
         spe_def = 100
-        charizard = AllRounderPokemon(stat_current=Statistic(
-            sp_atk=spe_atk,
-            sp_def=spe_def
-        ))
+        charizard = AllRounderPokemon(
+            stat_current=Statistic(sp_atk=spe_atk, sp_def=spe_def)
+        )
 
         # WHEN
         multiplier = charizard.get_pokemon_attack_coef()
@@ -21,7 +20,8 @@ class TestAllRounderPokemon(TestCase):
         self.assertEqual(2, multiplier)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run the tests
     result = TextTestRunner().run(
-        TestLoader().loadTestsFromTestCase(TestAllRounderPokemon))
+        TestLoader().loadTestsFromTestCase(TestAllRounderPokemon)
+    )

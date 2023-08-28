@@ -8,7 +8,6 @@ from business_object.statistic import Statistic
 
 class TestPhysicalFormulaAttack(TestCase):
     def test_compute_damage(self):
-
         # GIVEN
         expected_damage = 87
         power = 100
@@ -17,9 +16,9 @@ class TestPhysicalFormulaAttack(TestCase):
         defense = 10
         basic_hit = PhysicalFormulaAttack(power=power)
 
-        pikachu = AttackerPokemon(level=1,
-                                  stat_current=Statistic(attack=attack,
-                                                         speed=speed))
+        pikachu = AttackerPokemon(
+            level=1, stat_current=Statistic(attack=attack, speed=speed)
+        )
         venusaur = AttackerPokemon(stat_current=Statistic(defense=defense))
 
         # Because the damage calculation involves some RNG we need to
@@ -33,7 +32,6 @@ class TestPhysicalFormulaAttack(TestCase):
         self.assertEqual(expected_damage, damage)
 
     def test_get_defense_stat(self):
-
         # GIVEN
         defense = 10
         basic_hit = PhysicalFormulaAttack()
@@ -47,7 +45,6 @@ class TestPhysicalFormulaAttack(TestCase):
         self.assertEqual(defense, defense_stat)
 
     def test_get_attack_stat(self):
-
         # GIVEN
         attack = 10
         basic_hit = PhysicalFormulaAttack()

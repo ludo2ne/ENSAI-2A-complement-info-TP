@@ -2,18 +2,15 @@ from abc import ABC, abstractmethod
 
 
 class AbstractAttack(ABC):
-    def __init__(self,
-                 power: int = None,
-                 name: str = None,
-                 description: str = None):
+    def __init__(self, power: int = None, name: str = None, description: str = None):
         self._power = power
         self._name = name
         self._description = description
 
     @abstractmethod
-    def compute_damage(self,
-                       attacker: 'AbstractPokemon',
-                       defender: 'AbstractPokemon') -> int:
+    def compute_damage(
+        self, attacker: "AbstractPokemon", defender: "AbstractPokemon"
+    ) -> int:
         """
          Return the damage of the attack.
          It's an abstract method because some attack will

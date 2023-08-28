@@ -6,10 +6,9 @@ from business_object.pokemon.abstract_pokemon import AbstractPokemon
 
 
 class AbstractFormulaAttack(AbstractAttack):
-
-    def compute_damage(self,
-                       attacker: AbstractPokemon,
-                       defender: AbstractPokemon) -> int:
+    def compute_damage(
+        self, attacker: AbstractPokemon, defender: AbstractPokemon
+    ) -> int:
         """
         Return the damage of the attack.
 
@@ -40,19 +39,21 @@ class AbstractFormulaAttack(AbstractAttack):
             int : the damage
 
         """
-        raw_power = (attacker.level * 0.4 + 2) * \
-            self.get_attack_stat(attacker) * self._power
+        raw_power = (
+            (attacker.level * 0.4 + 2) * self.get_attack_stat(attacker) * self._power
+        )
 
-        raw_damage = raw_power / \
-            (self.get_defense_stat(defender) * 50) + 2
+        raw_damage = raw_power / (self.get_defense_stat(defender) * 50) + 2
 
         rand = uniform(0.85, 1)
 
-        final_damage = raw_damage \
-            * attacker.get_pokemon_attack_coef() \
-            * self.other_modifier_atk(attacker) \
-            * self.other_modifier_def(defender) \
+        final_damage = (
+            raw_damage
+            * attacker.get_pokemon_attack_coef()
+            * self.other_modifier_atk(attacker)
+            * self.other_modifier_def(defender)
             * rand
+        )
 
         return int(final_damage)
 
