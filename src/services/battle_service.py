@@ -8,18 +8,18 @@ from utils.singleton import Singleton
 
 
 class BattleService(metaclass=Singleton):
-    def resolve_battle(self,
-                       monstie_1: AbstractPokemon,
-                       monstie_2: AbstractPokemon) -> Battle:
+    def resolve_battle(
+        self, monstie_1: AbstractPokemon, monstie_2: AbstractPokemon
+    ) -> Battle:
         """
         A battle is divide in round. Each round one pokemon will be
         the attacker, the other the defender.
 
         The battle ends when a pokémon has 0 hp or less.
 
-        This method creates a Battle object, which contains all the 
-        damage inflicted and the state of the monsters each round. 
-        This object can be sent to a client to display the battle 
+        This method creates a Battle object, which contains all the
+        damage inflicted and the state of the monsters each round.
+        This object can be sent to a client to display the battle
         in a nice way.
 
         Args:
@@ -40,15 +40,16 @@ class BattleService(metaclass=Singleton):
         while attacker.hp_current > 0 and defender.hp_current > 0:
             attack_used = self.choose_attack(attacker)
 
-            damage = attack_used.compute_damage(attacker=attacker,
-                                                defender=defender)
+            damage = attack_used.compute_damage(attacker=attacker, defender=defender)
 
             defender.get_hit(damage=damage)
 
-            battle.add_round(attacker=attacker,
-                             defender=defender,
-                             dealt_damage=damage,
-                             attack_description=attack_used.description)
+            battle.add_round(
+                attacker=attacker,
+                defender=defender,
+                dealt_damage=damage,
+                attack_description=attack_used.description,
+            )
 
             # switch the role
             attacker, defender = defender, attacker
@@ -57,10 +58,9 @@ class BattleService(metaclass=Singleton):
         battle.winner = defender
         return battle
 
-    def get_order(self,
-                  monstie_1: AbstractPokemon,
-                  monstie_2: AbstractPokemon) -> Tuple[AbstractPokemon,
-                                                       AbstractPokemon]:
+    def get_order(
+        self, monstie_1: AbstractPokemon, monstie_2: AbstractPokemon
+    ) -> Tuple[AbstractPokemon, AbstractPokemon]:
         """
         Determine the first pokemon to attack.
         It compute a random int in [0; 50[ and add it to the pokemon speed.
