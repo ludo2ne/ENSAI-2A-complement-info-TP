@@ -9,10 +9,7 @@ class TestAttackerPokemon(TestCase):
         # GIVEN
         attack = 100
         speed = 100
-        pikachu = AttackerPokemon(stat_current=Statistic(
-            attack=attack,
-            speed=speed
-        ))
+        pikachu = AttackerPokemon(stat_current=Statistic(attack=attack, speed=speed))
 
         # WHEN
         multiplier = pikachu.get_pokemon_attack_coef()
@@ -21,7 +18,8 @@ class TestAttackerPokemon(TestCase):
         self.assertEqual(2, multiplier)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run the tests
     result = TextTestRunner().run(
-        TestLoader().loadTestsFromTestCase(TestAttackerPokemon))
+        TestLoader().loadTestsFromTestCase(TestAttackerPokemon)
+    )

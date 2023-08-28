@@ -16,13 +16,15 @@ class AbstractPokemon(ABC):
     # Constructor
     # -------------------------------------------------------------------------
 
-    def __init__(self,
-                 stat_max=None,
-                 stat_current=None,
-                 level=0,
-                 name=None,
-                 common_attacks=[],
-                 special_attack=None) -> None:
+    def __init__(
+        self,
+        stat_max=None,
+        stat_current=None,
+        level=0,
+        name=None,
+        common_attacks=[],
+        special_attack=None,
+    ) -> None:
         # -----------------------------
         # Attributes
         # -----------------------------
