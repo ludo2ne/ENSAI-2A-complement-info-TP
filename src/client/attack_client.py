@@ -12,7 +12,7 @@ END_POINT = "/attack"
 
 class AttackClient(metaclass=Singleton):
     def __init__(self) -> None:
-        # Utilisation d'une variable d'environnement définie dans le fichier .env
+        # Using an environment variable defined in the .env file
         self.__HOST = os.environ["HOST_WEBSERVICE"]
 
     def get_attack(self, id: int) -> Optional[AbstractAttack]:
@@ -46,8 +46,9 @@ class AttackClient(metaclass=Singleton):
         return attack
 
 
+# Execute Code When the File Runs as a Script
 if __name__ == "__main__":
-    # Pour charger les variables d'environnement contenues dans le fichier .env
+    # To load environment variables contained in the .env file
     import dotenv
 
     dotenv.load_dotenv(override=True)
