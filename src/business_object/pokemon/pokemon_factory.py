@@ -6,7 +6,7 @@ from business_object.pokemon.defender_pokemon import DefenderPokemon
 from business_object.pokemon.all_rounder_pokemon import AllRounderPokemon
 from business_object.statistic import Statistic
 from business_object.pokemon.supporter_pokemon import SupporterPokemon
-from business_object import pokemon
+
 from utils.singleton import Singleton
 
 

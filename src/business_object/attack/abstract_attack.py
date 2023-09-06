@@ -51,3 +51,7 @@ class AbstractAttack(ABC):
     @id.setter
     def id(self, value):
         self._id = value
+
+    @property
+    def type(self):
+        return self._TYPE_NAME
