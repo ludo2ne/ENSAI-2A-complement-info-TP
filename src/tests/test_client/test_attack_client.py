@@ -1,7 +1,9 @@
 import os
+import time
 
-from client.attack_client import AttackClient
 from unittest import TestCase, TextTestRunner, TestLoader, mock
+from client.attack_client import AttackClient
+from business_object.attack.physical_attack import PhysicalFormulaAttack
 
 
 """
@@ -47,6 +49,54 @@ class TestAttackClient(TestCase):
 
         # THEN
         self.assertIsNotNone(attacks)
+
+    def test_create_attack_ok(self):
+        # GIVEN
+        attack_client = AttackClient()
+        attack = PhysicalFormulaAttack(
+            power=1000, name=f"test{time.time()}", description="a test"
+        )
+
+        # WHEN
+        created = attack_client.create_attack(attack)
+
+        # THEN
+        self.assertTrue(created)
+
+    def test_update_attack_ok(self):
+        # GIVEN
+        attack_client = AttackClient()
+        attack = PhysicalFormulaAttack(
+            id=50,
+            power=1000,
+            name=f"test{time.time()}",
+            description="a test",
+            accuracy=100,
+            element="foudre",
+        )
+
+        # WHEN
+        updated = attack_client.update_attack(attack)
+
+        # THEN
+        self.assertTrue(updated)
+
+    def test_delete_attack_ok(self):
+        # GIVEN
+        attack_client = AttackClient()
+        timestamp = time.time()
+        attack = PhysicalFormulaAttack(
+            power=1000, name=f"test{timestamp}", description="a test"
+        )
+        # Need an attack to run the delete. It's a pretty bad way to do
+        # it but with the tools you know it's the best way :/
+        attack_client.create_attack(attack)
+
+        # WHEN
+        deleted = attack_client.delete_attack(attack)
+
+        # THEN
+        self.assertTrue(deleted)
 
 
 if __name__ == "__main__":
