@@ -2,10 +2,21 @@ from abc import ABC, abstractmethod
 
 
 class AbstractAttack(ABC):
-    def __init__(self, power: int = None, name: str = None, description: str = None):
+    def __init__(
+        self,
+        id=None,
+        power: int = None,
+        name: str = None,
+        description: str = None,
+        accuracy: int = None,
+        element: str = None,
+    ):
+        self._id = id
         self._power = power
         self._name = name
         self._description = description
+        self.accuracy = accuracy
+        self.element = element
 
     @abstractmethod
     def compute_damage(
@@ -32,3 +43,11 @@ class AbstractAttack(ABC):
     @property
     def description(self):
         return self._description
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value

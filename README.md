@@ -16,4 +16,8 @@ pip install -r requirements.txt     # install all packages listed in the file
 pip list                            # to list all installed packages
 ```
 
-* autopep8 : a popular Python package that automatically formats Python code
+* **psycopg2-binary** : This package is the PostgreSQL adapter for Python.
+* **dataclasses** : The dataclasses module provides a decorator-based approach to creating data classes.
+* **python-dotenv** : This library allows you to load environment variables from a .env file.
+* **fastapi** : FastAPI is a modern web framework for building APIs with high performance.
+* **inquirerPy** : Library that lets you create interactive command-line interfaces with questions and options for users.
