@@ -1,4 +1,4 @@
-INSERT INTO tp_pokemon.attack_type(attack_type_name, attack_type_description) VALUES
+INSERT INTO tp.attack_type(attack_type_name, attack_type_description) VALUES
 ('fixed damage', 'Attack with fixed damage equals to its power'),
 ('physical attack','Attack based on the attack and defense stats'),
 ('special attack', 'Attack based on the spe_atk and spe_def stats');
@@ -7,7 +7,7 @@ INSERT INTO tp_pokemon.attack_type(attack_type_name, attack_type_description) VA
 
 
 
-INSERT INTO tp_pokemon.attack(id_attack_type, power,accuracy, element, attack_name, attack_description) VALUES
+INSERT INTO tp.attack(id_attack_type, power,accuracy, element, attack_name, attack_description) VALUES
 (3,195, 0, 'Electric', '10,000,000 Volt Thunderbolt','Pikachu-exclusive Z-Move. High critical hit ratio.'),
 (3,20, 100, 'Grass', 'Absorb','User recovers half the HP inflicted on opponent.'),
 (2,40, 100, 'Rock', 'Accelerock','User attacks first.'),
@@ -753,7 +753,7 @@ INSERT INTO tp_pokemon.attack(id_attack_type, power,accuracy, element, attack_na
 
 
 
-INSERT INTO tp_pokemon.pokemon_type(pokemon_type_name, pokemon_type_description) VALUES
+INSERT INTO tp.pokemon_type(pokemon_type_name, pokemon_type_description) VALUES
 ('Speedster', 'Speedsters utilize their high mobility to deal quick attacks and score easy points. Take advantage of
 their fast movement speed to go in and out of goals and outmaneuver your enemies.'),
 ('Defender','Defenders offer their high Endurance to protect their teammates from harm. Take advantage of their huge
@@ -772,7 +772,7 @@ you can easily adapt into offensive and defensive roles when the situation deman
 
 
 
-INSERT INTO tp_pokemon.pokemon (name ,id_pokemon, hp, attack, defense, spe_atk, spe_def, speed, id_pokemon_type, level, url_image) VALUES 
+INSERT INTO tp.pokemon (name ,id_pokemon, hp, attack, defense, spe_atk, spe_def, speed, id_pokemon_type, level, url_image) VALUES 
 ('Bulbasaur',1 ,45, 49, 49, 65, 65, 45, 4, 100, 'https://img.pokemondb.net/sprites/sword-shield/icon/bulbasaur.png'),
 ('Ivysaur',2 ,60, 62, 63, 80, 80, 60, 4, 100, 'https://img.pokemondb.net/sprites/sword-shield/icon/ivysaur.png'),
 ('Venusaur',3 ,80, 82, 83, 100, 100, 80, 4, 100, 'https://img.pokemondb.net/sprites/sword-shield/icon/venusaur.png'),
@@ -1672,14 +1672,13 @@ INSERT INTO tp_pokemon.pokemon (name ,id_pokemon, hp, attack, defense, spe_atk, 
 ('Spectrier',897 ,100, 65, 60, 145, 80, 130, 1, 100, 'https://img.pokemondb.net/sprites/sword-shield/icon/spectrier.png'),
 ('Calyrex',898 ,100, 80, 80, 80, 80, 80, 2, 100, 'https://img.pokemondb.net/sprites/sword-shield/icon/calyrex.png');
 
-ALTER SEQUENCE tp_pokemon.pokemon_id_pokemon_seq RESTART WITH 899;
 
 
 
 
 
 
-INSERT INTO tp_pokemon.pokemon_attack(id_pokemon,id_attack, level) VALUES
+INSERT INTO tp.pokemon_attack(id_pokemon,id_attack, level) VALUES
 (1, 271, 1),
 (1, 272, 6),
 (1, 354, 9),

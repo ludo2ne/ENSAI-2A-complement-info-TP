@@ -8,7 +8,7 @@ class ResetDatabase(metaclass=Singleton):
     """
 
     def lancer(self):
-        print("Réinitialisation de la base de données")
+        print("Ré-initialisation de la base de données")
 
         init_db = open("data/init_db.sql", encoding="utf-8")
         init_db_as_string = init_db.read()
@@ -24,6 +24,8 @@ class ResetDatabase(metaclass=Singleton):
         except Exception as e:
             print(e)
             raise
+
+        print("Ré-initialisation de la base de données - Terminée")
 
         return True
 
