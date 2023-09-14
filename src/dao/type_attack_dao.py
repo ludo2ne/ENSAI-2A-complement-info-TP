@@ -33,10 +33,6 @@ class TypeAttackDAO(metaclass=Singleton):
             for row in res:
                 type_attack.append(row["attack_type_name"])
 
-                print(row["id_attack_type"])
-                print(row["attack_type_name"])
-                print(row["attack_type_description"])
-
         return type_attack
 
     def find_id_by_label(self, label: str) -> Optional[int]:

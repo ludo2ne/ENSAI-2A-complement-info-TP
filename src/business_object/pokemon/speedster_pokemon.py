@@ -10,7 +10,6 @@ class SpeedsterPokemon(AbstractPokemon):
         stat_current=None,
         level=None,
         name=None,
-        gear=None,
         common_attacks=[],
     ) -> None:
         special_attack = PhysicalFormulaAttack(
@@ -25,7 +24,6 @@ class SpeedsterPokemon(AbstractPokemon):
             stat_current=stat_current,
             level=level,
             name=name,
-            gear=gear,
             special_attack=special_attack,
             common_attacks=common_attacks,
         )

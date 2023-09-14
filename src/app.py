@@ -2,7 +2,41 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Dict
 
+
+from dao.attack_dao import AttackDao
+from dao.pokemon_dao import PokemonDao
+
 app = FastAPI()
+
+
+class PokemonModel(BaseModel):
+    name: str
+    level: int
+
+
+# List all attacks
+@app.get("/attack/")
+async def get_all_attacks(limit: int = 1000000):
+    return AttackDao().find_all_attacks(limit)
+
+
+# List all pokemons
+@app.get("/pokemon/")
+async def get_all_pokemons(limit: int = 1000000):
+    liste_pokemons = PokemonDao().find_all(limit)
+
+    # Convert all pokemons using the model
+    liste_model = []
+    for pokemon in liste_pokemons:
+        liste_model.append(PokemonModel(name=pokemon.name, level=pokemon.level))
+
+    return liste_model
+
+
+# Find a pokemon by name
+@app.get("/pokemon/{name}")
+async def get_pokemon_by_name(name: str):
+    return PokemonDao().find_pokemon_by_name(name)
 
 
 @app.get("/hello")
@@ -30,13 +64,13 @@ character_id = 3  # Initial character ID
 
 # List all characters
 @app.get("/character/")
-def list_characters():
+async def list_characters():
     return characters_db
 
 
 # Add a character
 @app.post("/character/")
-def create_character(character: Personnage):
+async def create_character(character: Personnage):
     global character_id
     characters_db[character_id] = character
     character_id += 1
@@ -45,7 +79,7 @@ def create_character(character: Personnage):
 
 # Update a character by ID
 @app.put("/character/{character_id}")
-def update_character(character_id: int, character: Personnage):
+async def update_character(character_id: int, character: Personnage):
     if character_id not in characters_db:
         raise HTTPException(status_code=404, detail="Character not found")
     characters_db[character_id] = character
@@ -54,7 +88,7 @@ def update_character(character_id: int, character: Personnage):
 
 # Delete a character by ID
 @app.delete("/character/{character_id}")
-def delete_character(character_id: int):
+async def delete_character(character_id: int):
     if character_id not in characters_db:
         raise HTTPException(status_code=404, detail="Character not found")
     deleted_character = characters_db.pop(character_id)
