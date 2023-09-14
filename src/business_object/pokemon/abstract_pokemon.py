@@ -18,6 +18,7 @@ class AbstractPokemon(ABC):
 
     def __init__(
         self,
+        id=None,
         stat_max=None,
         stat_current=None,
         level=0,
@@ -28,6 +29,7 @@ class AbstractPokemon(ABC):
         # -----------------------------
         # Attributes
         # -----------------------------
+        self._id: int = id
         self._stat_max: Statistic = stat_max
         self._stat_current: Statistic = stat_current
         self._level: int = level
@@ -149,6 +151,16 @@ class AbstractPokemon(ABC):
         self._stat_current.speed = value
 
     # Basic Getter / Setter
+
+    @property
+    def id(self):
+        """The id property."""
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value
+
     @property
     def stat(self):
         return self.stat

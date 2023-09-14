@@ -4,7 +4,13 @@ from business_object.attack.special_attack import SpecialFormulaAttack
 
 class AllRounderPokemon(AbstractPokemon):
     def __init__(
-        self, stat_max=None, stat_current=None, level=0, name=None, common_attacks=[]
+        self,
+        id=None,
+        stat_max=None,
+        stat_current=None,
+        level=0,
+        name=None,
+        common_attacks=[],
     ) -> None:
         special_attack = SpecialFormulaAttack(
             power=80,
@@ -16,6 +22,7 @@ class AllRounderPokemon(AbstractPokemon):
 
         # Calling the parent class constructor
         super().__init__(
+            id=id,
             stat_max=stat_max,
             stat_current=stat_current,
             level=level,
