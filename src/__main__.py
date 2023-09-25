@@ -1,14 +1,14 @@
 import dotenv
 
-from view.connection_view import ConnectionView
+from view.start_view import StartView
 
 # This script is the entry point of your application
 
 if __name__ == "__main__":
     dotenv.load_dotenv(override=True)
 
-    # run the Connection View
-    current_view = ConnectionView()
+    # run the Start View
+    current_view = StartView()
 
     # while current_view is not none, the application is still running
     while current_view:
