@@ -7,6 +7,8 @@ These practical exercises will be useful as part of the IT project
 * TP 3: Data Access Object (DAO)
 * TP 4: Creating an HMI (Human Machine Interface)
 
+Author : [Rémi Pépin](https://gitlab.com/remi2J/complement_info_ensai_2022_2023)
+
 ## Required packages
 
 Install the required packages with the following bash commands :

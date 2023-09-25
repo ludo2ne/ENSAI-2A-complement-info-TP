@@ -1,55 +1,26 @@
-from business_object.pokemon.attacker_pokemon import AttackerPokemon
-from business_object.pokemon.defender_pokemon import DefenderPokemon
-from business_object.statistic import Statistic
-from business_object.attack.special_attack import SpecialFormulaAttack
-from business_object.attack.physical_attack import PhysicalFormulaAttack
+import dotenv
 
-from services.battle_service import BattleService
+from view.connection_view import ConnectionView
 
-pikachu = AttackerPokemon(
-    level=10,
-    stat_current=Statistic(
-        hp=100, attack=60, sp_atk=70, defense=45, sp_def=30, speed=70
-    ),
-    name="Pikachu",
-    common_attacks=[
-        PhysicalFormulaAttack(
-            power=35,
-            description="Pikachu fonce sur l'ennemi si rapidement qu'on parvient à peine à le discerner.",
-            name="Vive attaque",
-        ),
-        SpecialFormulaAttack(
-            power=30,
-            description="Pikachu fait tomber la foudre sur son adversaire",
-            name="Tonnerre",
-        ),
-    ],
-)
+# This script is the entry point of your application
 
-snorlax = DefenderPokemon(
-    level=10,
-    stat_current=Statistic(
-        hp=100, attack=60, sp_atk=40, defense=60, sp_def=50, speed=40
-    ),
-    name="Snorlax",
-    common_attacks=[
-        PhysicalFormulaAttack(
-            power=30, description="Snorlax plaque le pokemon au sol", name="body_slam"
-        )
-    ],
-)
+if __name__ == "__main__":
+    dotenv.load_dotenv(override=True)
 
-print("Before battle")
-print(pikachu)
-print(snorlax)
-print("-" * 50)
+    # run the Connection View
+    current_view = ConnectionView()
 
-battle = BattleService().resolve_battle(monstie_1=pikachu, monstie_2=snorlax)
+    # while current_view is not none, the application is still running
+    while current_view:
+        # a border between view
+        with open("src/graphical_assets/border.txt", "r", encoding="utf-8") as asset:
+            print(asset.read())
+        # Display the info of the view
+        current_view.display_info()
+        # ask user for a choice
+        current_view = current_view.make_choice()
 
-print(battle)
-print("-" * 50)
-
-
-print("After battle")
-print(pikachu)
-print(snorlax)
+    with open(
+        "src/graphical_assets/suprised_pikachu.txt", "r", encoding="utf-8"
+    ) as asset:
+        print(asset.read())

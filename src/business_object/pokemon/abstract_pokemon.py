@@ -169,6 +169,10 @@ class AbstractPokemon(ABC):
     def level(self):
         return self._level
 
+    @level.setter
+    def level(self, value):
+        self._level = value
+
     @property
     def name(self):
         return self._name
