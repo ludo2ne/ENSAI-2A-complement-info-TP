@@ -71,6 +71,9 @@ class AbstractPokemon(ABC):
         res = "I am " + str(self.name)
         res += ", level : " + str(self.level)
         res += ", hp : " + str(self.hp_current)
+        res += ", attacks : "
+        for a in self.common_attacks:
+            res += a.name + ", "
         return res
 
     # -------------------------------------------------------------------------

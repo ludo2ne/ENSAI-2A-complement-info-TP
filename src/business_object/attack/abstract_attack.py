@@ -32,6 +32,12 @@ class AbstractAttack(ABC):
         """
         pass
 
+    def __str__(self):
+        res = "Attack : " + str(self._name)
+        res += ", power : " + str(self._power)
+        res += ", description : " + str(self._description)
+        return res
+
     @property
     def power(self):
         return self._power
