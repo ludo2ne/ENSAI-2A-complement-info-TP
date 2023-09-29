@@ -26,7 +26,7 @@ class TestAttackService(TestCase):
         attack = attack_service.get_attack_with_identifier_from_webservice(identifier)
 
         # THEN
-        self.assertEquals(identifier, attack.id)
+        self.assertEqual(identifier, attack.id)
 
     def test_get_pokemon_name_Pikachu(self):
         # GIVEN
@@ -37,7 +37,7 @@ class TestAttackService(TestCase):
         attack = attack_service.get_attack_with_identifier_from_webservice(identifier)
 
         # THEN
-        self.assertEquals(identifier, attack.name)
+        self.assertEqual(identifier, attack.name)
 
     def test_get_pokemon_name_not_found(self):
         # GIVEN

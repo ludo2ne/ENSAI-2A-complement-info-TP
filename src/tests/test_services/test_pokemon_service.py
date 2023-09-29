@@ -27,7 +27,7 @@ class TestPokemonService(TestCase):
         pokemons = pokemon_service.get_pokemon_from_webservice(limit, 0)
 
         # THEN
-        self.assertEquals(limit, len(pokemons))
+        self.assertEqual(limit, len(pokemons))
 
     def test_get_pokemon_id_1(self):
         # GIVEN
@@ -40,7 +40,7 @@ class TestPokemonService(TestCase):
         )
 
         # THEN
-        self.assertEquals(identifier, pokemon.id)
+        self.assertEqual(identifier, pokemon.id)
 
     def test_get_pokemon_name_Pikachu(self):
         # GIVEN
@@ -53,7 +53,7 @@ class TestPokemonService(TestCase):
         )
 
         # THEN
-        self.assertEquals(identifier, pokemon.name)
+        self.assertEqual(identifier, pokemon.name)
 
     def test_get_pokemon_name_not_found(self):
         # GIVEN
