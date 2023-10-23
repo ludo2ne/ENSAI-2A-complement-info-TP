@@ -1,5 +1,9 @@
 # ENSAI-2A-complement-info-TP
 
+Author : [Rémi Pépin](https://gitlab.com/remi2J/complement_info_ensai_2022_2023)
+
+## Goals
+
 These practical exercises will be useful as part of the IT project
 
 * TP 1: Back to OOP, business objects and strategy design patterns
