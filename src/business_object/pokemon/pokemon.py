@@ -13,12 +13,11 @@ class Pokemon:
     # -------------------------------------------------------------------------
 
     def __init__(
-        self, stat_max=None, stat_current=None, level=0, name=None, type_pk=None
+        self, stat_current=None, level=0, name=None, type_pk=None
     ):
         # -----------------------------
         # Attributes
         # -----------------------------
-        self._stat_max: Statistic = stat_max
         self._stat_current: Statistic = stat_current
         self._level: int = level
         self._name: str = name
@@ -56,9 +55,6 @@ class Pokemon:
         """
         self._level += 1
 
-    def reset_actual_stat(self) -> None:
-        self._stat_current = copy.deepcopy(self._stat_max)
-
     def get_hit(self, damage) -> None:
         """
         Decrease health point when receiving damages
@@ -78,30 +74,6 @@ class Pokemon:
     # -------------------------------------------------------------------------
     # Getters and Setters
     # -------------------------------------------------------------------------
-
-    @property
-    def attack(self):
-        return self._stat_max.attack
-
-    @property
-    def hp(self):
-        return self._stat_max.hp
-
-    @property
-    def defense(self):
-        return self._stat_max.defense
-
-    @property
-    def sp_atk(self):
-        return self._stat_max.sp_atk
-
-    @property
-    def sp_def(self):
-        return self._stat_max.sp_def
-
-    @property
-    def speed(self):
-        return self._stat_max.speed
 
     @property
     def attack_current(self):
