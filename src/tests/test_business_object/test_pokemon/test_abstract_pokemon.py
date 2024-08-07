@@ -1,11 +1,10 @@
-from unittest import TestCase, TextTestRunner, TestLoader
 from unittest.mock import patch
 
 from business_object.pokemon.abstract_pokemon import AbstractPokemon
 from business_object.statistic import Statistic
 
 
-class TestAbstractPokemon(TestCase):
+class TestAbstractPokemon:
     # Ok that's a little tricky. Here I want to test a method
     # of an abstract class. But I cannot instantiate abstract class
     # with abstract method.
@@ -18,10 +17,12 @@ class TestAbstractPokemon(TestCase):
     def test_level_up(self):
         # GIVEN
         abstract_pokemon = AbstractPokemon(level=1)
+
         # WHEN
         abstract_pokemon.level_up()
+
         # THEN
-        self.assertEqual(2, abstract_pokemon.level)
+        assert abstract_pokemon.level == 2
 
     @patch.multiple(AbstractPokemon, __abstractmethods__=set())
     def test_reset_actual_stat(self):
@@ -36,13 +37,14 @@ class TestAbstractPokemon(TestCase):
         )
         # WHEN
         abstract_pokemon.reset_actual_stat()
+
         # THEN
-        self.assertEqual(10, abstract_pokemon.hp_current)
-        self.assertEqual(11, abstract_pokemon.attack_current)
-        self.assertEqual(12, abstract_pokemon.defense_current)
-        self.assertEqual(13, abstract_pokemon.sp_atk_current)
-        self.assertEqual(14, abstract_pokemon.sp_def_current)
-        self.assertEqual(15, abstract_pokemon.speed_current)
+        assert 10 == abstract_pokemon.hp_current
+        assert 11 == abstract_pokemon.attack_current
+        assert 12 == abstract_pokemon.defense_current
+        assert 13 == abstract_pokemon.sp_atk_current
+        assert 14 == abstract_pokemon.sp_def_current
+        assert 15 == abstract_pokemon.speed_current
 
     @patch.multiple(AbstractPokemon, __abstractmethods__=set())
     def test_get_hit_more_hp_than_damage(self):
@@ -55,7 +57,7 @@ class TestAbstractPokemon(TestCase):
         abstract_pokemon.get_hit(damage)
 
         # THEN
-        self.assertEqual(hit_point - damage, abstract_pokemon.hp_current)
+        assert abstract_pokemon.hp_current == hit_point - damage
 
     @patch.multiple(AbstractPokemon, __abstractmethods__=set())
     def test_get_hit_more_damage_than_hp(self):
@@ -68,11 +70,4 @@ class TestAbstractPokemon(TestCase):
         abstract_pokemon.get_hit(damage)
 
         # THEN
-        self.assertEqual(0, abstract_pokemon.hp_current)
-
-
-if __name__ == "__main__":
-    # Run the tests
-    result = TextTestRunner().run(
-        TestLoader().loadTestsFromTestCase(TestAbstractPokemon)
-    )
+        assert abstract_pokemon.hp_current == 0

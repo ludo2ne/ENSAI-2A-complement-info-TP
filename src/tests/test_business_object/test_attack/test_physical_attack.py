@@ -1,12 +1,11 @@
 import random
-from unittest import TestCase
 
 from business_object.attack.physical_attack import PhysicalFormulaAttack
 from business_object.pokemon.attacker_pokemon import AttackerPokemon
 from business_object.statistic import Statistic
 
 
-class TestPhysicalFormulaAttack(TestCase):
+class TestPhysicalFormulaAttack:
     def test_compute_damage(self):
         # GIVEN
         expected_damage = 87
@@ -29,7 +28,7 @@ class TestPhysicalFormulaAttack(TestCase):
         damage = basic_hit.compute_damage(pikachu, venusaur)
 
         # THEN
-        self.assertEqual(expected_damage, damage)
+        assert damage == expected_damage
 
     def test_get_defense_stat(self):
         # GIVEN
@@ -42,7 +41,7 @@ class TestPhysicalFormulaAttack(TestCase):
         defense_stat = basic_hit.get_defense_stat(defender=venusaur)
 
         # THEN
-        self.assertEqual(defense, defense_stat)
+        assert defense == defense_stat
 
     def test_get_attack_stat(self):
         # GIVEN
@@ -55,4 +54,4 @@ class TestPhysicalFormulaAttack(TestCase):
         attack_stat = basic_hit.get_attack_stat(attacker=pikachu)
 
         # THEN
-        self.assertEqual(attack, attack_stat)
+        assert attack == attack_stat

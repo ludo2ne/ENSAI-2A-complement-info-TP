@@ -1,37 +1,39 @@
 import time
-from unittest import TestCase, TextTestRunner, TestLoader
 from business_object.attack.special_attack import SpecialFormulaAttack
 
 from dao.attack_dao import AttackDao
 
 
-class TestAttackDao(TestCase):
+class TestAttackDao:
     def test_find_all_attacks(self):
         # GIVEN
         attack_dao = AttackDao()
+
         # WHEN
         attacks = attack_dao.find_all_attacks(100)
 
         # THEN
-        self.assertEqual(100, len(attacks))
+        assert len(attacks) == 100
 
     def test_find_attack_by_id_ok(self):
         # GIVEN
         attack_dao = AttackDao()
+
         # WHEN
         attack = attack_dao.find_attack_by_id(1)
 
         # THEN
-        self.assertEqual(1, attack.id)
+        assert attack.id == 1
 
     def test_find_attack_by_id_not_found(self):
         # GIVEN
         attack_dao = AttackDao()
+
         # WHEN
         attack = attack_dao.find_attack_by_id(-1)
 
         # THEN
-        self.assertIsNone(attack)
+        assert attack is None
 
     def test_create_attack_ok(self):
         # GIVEN
@@ -47,8 +49,8 @@ class TestAttackDao(TestCase):
         created = attack_dao.add_attack(attack)
 
         # THEN
-        self.assertTrue(created)
-        self.assertIsNotNone(attack.id)
+        assert created
+        assert attack.id is not None
 
     def test_update_attack_ok(self):
         # GIVEN
@@ -61,11 +63,12 @@ class TestAttackDao(TestCase):
             accuracy=10,
             element="foudre",
         )
+
         # WHEN
         updated = attack_dao.update_attack(attack)
 
         # THEN
-        self.assertTrue(updated)
+        assert updated
 
     def test_update_attack_ko(self):
         # GIVEN
@@ -82,11 +85,10 @@ class TestAttackDao(TestCase):
         updated = attack_dao.update_attack(attack)
 
         # THEN
-        self.assertFalse(updated)
+        assert not updated
 
 
 if __name__ == "__main__":
-    # Run the tests
-    result = TextTestRunner(verbosity=2).run(
-        TestLoader().loadTestsFromTestCase(TestAttackDao)
-    )
+    import pytest
+
+    pytest.main([__file__])
