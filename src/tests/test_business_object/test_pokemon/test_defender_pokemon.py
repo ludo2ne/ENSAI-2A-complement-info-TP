@@ -1,10 +1,8 @@
-from unittest import TestCase, TextTestRunner, TestLoader
-
 from business_object.pokemon.defender_pokemon import DefenderPokemon
 from business_object.statistic import Statistic
 
 
-class TestDefenderPokemon(TestCase):
+class TestDefenderPokemon:
     def test_get_coef_damage_type(self):
         # GIVEN
         snorlax = DefenderPokemon(stat_current=Statistic(attack=100, defense=100))
@@ -13,11 +11,10 @@ class TestDefenderPokemon(TestCase):
         multiplier = snorlax.get_pokemon_attack_coef()
 
         # THEN
-        self.assertEqual(2, multiplier)
+        assert multiplier == 2
 
 
 if __name__ == "__main__":
-    # Run the tests
-    result = TextTestRunner().run(
-        TestLoader().loadTestsFromTestCase(TestDefenderPokemon)
-    )
+    import pytest
+
+    pytest.main([__file__])
