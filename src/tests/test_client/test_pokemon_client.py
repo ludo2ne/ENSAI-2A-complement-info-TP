@@ -1,6 +1,6 @@
 import os
 
-from unittest import TestCase, TextTestRunner, TestLoader, mock
+from unittest import mock
 from client.pokemon_client import PokemonClient
 
 
@@ -15,7 +15,7 @@ en entier, et ne pas vraiment le contacter pour éviter des problèmes de donné
 
 
 @mock.patch.dict(os.environ, {"HOST_WEBSERVICE": "http://web-services.domensai.ecole"})
-class TestPokemonClient(TestCase):
+class TestPokemonClient:
     def test_get_pikachu(self):
         # GIVEN
         pokemon_name = "Pikachu"
@@ -25,9 +25,10 @@ class TestPokemonClient(TestCase):
         pokemon = pokemon_client.get_pokemon(pokemon_name)
 
         # THEN
-        self.assertEqual(pokemon_name, pokemon.name)
+        assert pokemon_name == pokemon.name
 
 
 if __name__ == "__main__":
-    # Run the tests
-    result = TextTestRunner().run(TestLoader().loadTestsFromTestCase(TestPokemonClient))
+    import pytest
+
+    pytest.main([__file__])
