@@ -1,10 +1,8 @@
-from unittest import TestCase
-
 from business_object.attack.fixed_damage_attack import FixedDamageAttack
 from business_object.pokemon.attacker_pokemon import AttackerPokemon
 
 
-class TestFixedDamageAttack(TestCase):
+class TestFixedDamageAttack:
     def test_compute_damage(self):
         # GIVEN
         power = 100
@@ -17,4 +15,4 @@ class TestFixedDamageAttack(TestCase):
         damage = basic_hit.compute_damage(pikachu, venusaur)
 
         # THEN
-        self.assertEqual(power, damage)
+        assert power == damage
