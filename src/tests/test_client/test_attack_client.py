@@ -1,7 +1,7 @@
 import os
 
 from client.attack_client import AttackClient
-from unittest import TestCase, TextTestRunner, TestLoader, mock
+from unittest import mock
 
 
 """
@@ -15,7 +15,7 @@ en entier, et ne pas vraiment le contacter pour éviter des problèmes de donné
 
 
 @mock.patch.dict(os.environ, {"HOST_WEBSERVICE": "http://web-services.domensai.ecole"})
-class TestAttackClient(TestCase):
+class TestAttackClient:
     def test_get_attack_ok(self):
         # GIVEN
         attack_id = 1
@@ -25,7 +25,7 @@ class TestAttackClient(TestCase):
         attack = attack_client.get_attack(attack_id)
 
         # THEN
-        self.assertEqual(attack_id, attack.id)
+        assert attack_id == attack.id
 
     def test_get_attack_none(self):
         # GIVEN
@@ -36,7 +36,7 @@ class TestAttackClient(TestCase):
         attack = attack_client.get_attack(attack_id)
 
         # THEN
-        self.assertIsNone(attack)
+        assert attack is None
 
     def test_get_all_attack_ok(self):
         # GIVEN
@@ -46,9 +46,10 @@ class TestAttackClient(TestCase):
         attacks = attack_client.get_all_attack()
 
         # THEN
-        self.assertIsNotNone(attacks)
+        assert attacks is not None
 
 
 if __name__ == "__main__":
-    # Run the tests
-    result = TextTestRunner().run(TestLoader().loadTestsFromTestCase(TestAttackClient))
+    import pytest
+
+    pytest.main([__file__])
