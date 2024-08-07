@@ -1,12 +1,11 @@
 import random
-from unittest import TestCase
 
 from business_object.attack.special_attack import SpecialFormulaAttack
 from business_object.pokemon.attacker_pokemon import AttackerPokemon
 from business_object.statistic import Statistic
 
 
-class TestSpecialFormulaAttack(TestCase):
+class TestSpecialFormulaAttack:
     def test_compute_damage(self):
         # GIVEN
         expected_damage = 65
@@ -29,7 +28,7 @@ class TestSpecialFormulaAttack(TestCase):
         damage = special_hit.compute_damage(pikachu, venusaur)
 
         # THEN
-        self.assertEqual(expected_damage, damage)
+        assert damage == expected_damage
 
     def test_get_defense_stat(self):
         # GIVEN
@@ -41,7 +40,7 @@ class TestSpecialFormulaAttack(TestCase):
         defense_stat = special_hit.get_defense_stat(defender=venusaur)
 
         # THEN
-        self.assertEqual(sp_def, defense_stat)
+        assert sp_def == defense_stat
 
     def test_get_attack_stat(self):
         # GIVEN
@@ -53,4 +52,4 @@ class TestSpecialFormulaAttack(TestCase):
         attack_stat = special_hit.get_attack_stat(attacker=pikachu)
 
         # THEN
-        self.assertEqual(sp_attack, attack_stat)
+        assert sp_attack == attack_stat

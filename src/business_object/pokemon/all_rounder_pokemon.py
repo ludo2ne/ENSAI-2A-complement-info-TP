@@ -7,16 +7,11 @@ class AllRounderPokemon(AbstractPokemon):
         self, stat_max=None, stat_current=None, level=0, name=None, common_attacks=[]
     ) -> None:
         special_attack = SpecialFormulaAttack(
-            power=80,
-            name="Dragon laser",
-            description="{pokemon} a dark laser shoots a dark laser.".format(
-                pokemon=name
-            ),
+            power=80, name="Dragon laser", description=f"{name} shoots a dark laser."
         )
 
         # Calling the parent class constructor
         super().__init__(
-            stat_max=stat_max,
             stat_current=stat_current,
             level=level,
             name=name,

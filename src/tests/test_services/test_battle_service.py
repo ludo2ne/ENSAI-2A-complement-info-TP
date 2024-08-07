@@ -1,13 +1,15 @@
+import random
+
+from unittest.mock import patch
+from unittest import TestCase
+
+from business_object.statistic import Statistic
+from business_object.pokemon.abstract_pokemon import AbstractPokemon
+from business_object.pokemon.attacker_pokemon import AttackerPokemon
 from business_object.pokemon.defender_pokemon import DefenderPokemon
 from business_object.attack.special_attack import SpecialFormulaAttack
 from business_object.attack.physical_attack import PhysicalFormulaAttack
-import random
 from services.battle_service import BattleService
-from business_object.pokemon.abstract_pokemon import AbstractPokemon
-from unittest.mock import patch
-from business_object.statistic import Statistic
-from business_object.pokemon.attacker_pokemon import AttackerPokemon
-from unittest import TestCase
 
 
 class TestBattleService(TestCase):
