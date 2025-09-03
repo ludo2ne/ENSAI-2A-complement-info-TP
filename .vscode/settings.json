@@ -1,15 +1,17 @@
 {
-    "flake8.args": [
-        "--max-line-length=100"
-    ],
-    "black-formatter.args": ["--line-length", "100"],
+    "ruff.lint.enable": true,
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
-        "editor.rulers": [100]
     },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",            
+        "source.organizeImports": "explicit"
+    },
+    "editor.rulers": [100],
+    "ruff.lineLength": 100,
     "python.analysis.extraPaths": [
         "./*"
     ],
@@ -30,3 +32,5 @@
     },
     "python.testing.pytestEnabled": true
 }
+
+
