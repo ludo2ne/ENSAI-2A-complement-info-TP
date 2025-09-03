@@ -13,14 +13,13 @@ class AbstractFormulaAttack(AbstractAttack):
         Return the damage of the attack.
 
         The basic formula is : (yes it's the Pokemon damage formula)
-            (((Niv×0.4+2)×Att×Pui)/(Def×50)+2)×pkemn_coefxother_modifier*random
+            (((Niv×0.4+2)×Att×Pui)/(Def×50)+2)×pkemn_coef*random
         and we take the integer part.
         With
             Att = attacker's Attack or Special
             Def = defender's Defense or Special
             Pui = attack's power
             pkemn : attacker's damage multiplier
-            other_modifier = all other modifiers (crit, status, etc)
             random = a random number between 0.85 an d1
 
         This method is not abstract anymore ! What does this mean ?
@@ -50,8 +49,6 @@ class AbstractFormulaAttack(AbstractAttack):
         final_damage = (
             raw_damage
             * attacker.get_pokemon_attack_coef()
-            * self.other_modifier_atk(attacker)
-            * self.other_modifier_def(defender)
             * rand
         )
 
@@ -85,29 +82,3 @@ class AbstractFormulaAttack(AbstractAttack):
 
         """
         pass
-
-    def other_modifier_atk(self, attacker: AbstractPokemon) -> float:
-        """
-        Compute all the other modifiers (status mod, etc)
-        For this lab it's only a dummy function. It can be
-        overridden if needed
-        Args:
-            attacker (AbstractPokemon): the attacker
-
-        Returns:
-
-        """
-        return 1
-
-    def other_modifier_def(self, defender: AbstractPokemon) -> float:
-        """
-        Compute all the other modifiers (status mod, etc)
-        For this lab it's only a dummy function. It can be
-        overridden if needed
-        Args:
-            defender (AbstractPokemon): the defender
-
-        Returns:
-
-        """
-        return 1
