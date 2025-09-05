@@ -1,5 +1,5 @@
-from business_object.pokemon.defender_pokemon import DefenderPokemon
-from business_object.statistic import Statistic
+from src.business_object.pokemon.defender_pokemon import DefenderPokemon
+from src.business_object.statistic import Statistic
 
 
 class TestDefenderPokemon:
