@@ -1,4 +1,4 @@
-from abstract_attack import AbstractAttack
+from src.business_object.attack.abstract_attack import AbstractAttack
 
 
 class FixedDamageAttack(AbstractAttack):

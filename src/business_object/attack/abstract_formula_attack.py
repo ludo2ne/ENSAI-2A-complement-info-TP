@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from abstract_attack import AbstractAttack
+from src.business_object.attack.abstract_attack import AbstractAttack
 
 
 class AbstractFormulaAttack(ABC, AbstractAttack):
