@@ -12,9 +12,7 @@ class Pokemon:
     # Constructor
     # -------------------------------------------------------------------------
 
-    def __init__(
-        self, stat_max=None, stat_current=None, level=0, name=None, type_pk=None
-    ):
+    def __init__(self, stat_max=None, stat_current=None, level=0, name=None, type_pk=None):
         # -----------------------------
         # Attributes
         # -----------------------------
@@ -46,7 +44,7 @@ class Pokemon:
         elif self._type == "Supporter":
             multiplier = 1 + (self.sp_atk_current + self.defense_current) / 200
         else:
-            raise Exception("type inconnu")
+            raise Exception("unknown type")
 
         return multiplier
 
