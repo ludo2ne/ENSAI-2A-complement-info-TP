@@ -5,7 +5,7 @@ from src.business_object.statistic import Statistic
 class TestAttackerPokemon:
     def test_get_coef_damage_type(self):
         # GIVEN
-        snorlax = AttackerPokemon(stat_current=Statistic(sp_atk=100, sp_def=100))
+        snorlax = AttackerPokemon(stat_current=Statistic(attack=100, speed=100))
 
         # WHEN
         multiplier = snorlax.get_pokemon_attack_coef()

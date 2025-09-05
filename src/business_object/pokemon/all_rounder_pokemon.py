@@ -2,8 +2,6 @@ from src.business_object.pokemon.abstract_pokemon import AbstractPokemon
 
 
 class AllRounderPokemon(AbstractPokemon):
-    def __init__(self):
-        super().__init__()
 
     def get_pokemon_attack_coef(self):
         """
